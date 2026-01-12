@@ -1,0 +1,62 @@
+[
+  {
+    "role": "user",
+    "content": "hi"
+  },
+  {
+    "role": "assistant",
+    "content": "{\"question\": \"hi\", \"action_taken\": [\"memory\", \"web\", \"llm\"], \"answer\": \"an informal greeting, usually to people who you know\", \"confidence\": 95}"
+  },
+  {
+    "role": "assistant",
+    "content": "{\"question\": \"hi\", \"action_taken\": [\"llm\"], \"answer\": \"Hello! How can I help you?\", \"confidence\": 100}"
+  },
+  {
+    "role": "user",
+    "content": "who is devansh"
+  },
+  {
+    "role": "assistant",
+    "content": "{\"question\": \"who is devansh\", \"action_taken\": [\"memory\", \"web\", \"llm\"], \"answer\": \"No information found about Devansh\", \"confidence\": 0}"
+  },
+  {
+    "role": "user",
+    "content": "who is makam devansh"
+  },
+  {
+    "role": "assistant",
+    "content": "{\"question\": \"who is makam devansh\", \"action_taken\": [\"memory\", \"web\", \"llm\"], \"answer\": \"No information found about Makam Devansh\", \"confidence\": 0}"
+  },
+  {
+    "role": "user",
+    "content": "products of youngsoft pvt india"
+  },
+  {
+    "role": "user",
+    "content": "products of youngsoft india"
+  },
+  {
+    "role": "assistant",
+    "content": "{\"question\": \"products of youngsoft india\", \"action_taken\": [\"products of youngsoft pvt india\", \"products of youngsoft india\"], \"answer\": \"YoungSoft India offers various software products, including but not limited to: YS-ERP, YS-CRM, YS-HRM, and YS-POS.\", \"confidence\": 80}"
+  },
+  {
+    "role": "user",
+    "content": "devansh is a good boy"
+  },
+  {
+    "role": "assistant",
+    "content": "{\"question\": \"devansh is a good boy\", \"action_taken\": [\"memory\", \"web\", \"llm\"], \"answer\": \"According to the web, Devansh is a name with a positive meaning, suggesting a person destined for success.\", \"confidence\": 60}"
+  },
+  {
+    "role": "user",
+    "content": "who is good boy"
+  },
+  {
+    "role": "assistant",
+    "content": "{\"question\": \"who is good boy\", \"action_taken\": [\"memory\", \"web\", \"llm\"], \"answer\": \"The idiom 'good boy' is a phrase used to describe a person, typically a child, who is behaving well or doing something good. It can also be used to describe a person who is kind or helpful.\", \"confidence\": 20}"
+  },
+  {
+    "role": "user",
+    "content": ""
+  }
+]
