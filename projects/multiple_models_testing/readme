@@ -1,87 +1,81 @@
-# ➕ How to Add a New Model
+➕ How to Add a New Model
 
-This project uses a **plugin-based model system**.  
-To add a new model, follow these steps.
+This project uses a plugin-based model registry.
+Each model is registered once and can be selected via .env.
 
----
+1️⃣ Create a model file
 
-## 1️⃣ Create a model file
-
-Create a new file inside the `models/` folder.
+Create a new Python file inside the models/ folder.
 
 Example:
+
 models/my_model.py
 
-python
-Copy code
+2️⃣ Implement the model class
 
----
+Your model must:
 
-## 2️⃣ Write the model class
+Inherit from BaseModel
 
-Your model file **must look like this**:
+Implement load() and generate()
 
-```python
+NOT load heavy resources at import time
+
 from core.base_model import BaseModel
-from core.registry import register_model
 
 class MyModel(BaseModel):
-    name = "my-model"   # unique model name
-
     def load(self):
-        # load weights OR connect to API here
+        # Load weights or connect to API here
         print("MyModel loaded")
 
     def generate(self, prompt: str) -> str:
-        # take prompt and return text
         return f"Response: {prompt}"
 
-# REQUIRED: register the model
-register_model(MyModel)
-3️⃣ Import the model (MANDATORY)
-Add your model import in:
+3️⃣ Register the model (MANDATORY)
 
-bash
-Copy code
-models/__init__.py
-Example:
+Open models/__init__.py and register the model once.
 
-python
-Copy code
+from core.registry import register_model
 from models.my_model import MyModel
-⚠️ If you skip this step, the model will NOT appear.
 
-4️⃣ Run the app
-From project root:
+register_model("my-model", MyModel)
 
-bash
-Copy code
+
+⚠️ If you skip this step, the model will NOT be available.
+
+4️⃣ Select the model via .env
+
+Set the model name in your .env file:
+
+MODEL_USE=my-model
+
+5️⃣ Run the application
+
+From the project root:
+
 python -m app.main
-Your model will now appear in the selection list.
+
+
+The model defined in .env will be loaded and used.
 
 ✅ Checklist
- File created in models/
+
+ File created inside models/
 
  Inherits BaseModel
 
- Has unique name
-
  Implements load() and generate()
 
- Calls register_model()
+ Registered in models/__init__.py
 
- Imported in models/__init__.py
+ MODEL_USE set correctly in .env
 
 Done ✅
 
-yaml
-Copy code
+ℹ️ Notes
 
----
+Models are not loaded at startup
 
-If you want, next I can:
-- Convert this to **auto-discovery (no manual import)**
-- Give a **Gemini / HF / Ollama template**
-- Add **streaming version**
+Only the selected model’s load() method is executed
 
-Just say 👍
+Registration stores class references, not instances
